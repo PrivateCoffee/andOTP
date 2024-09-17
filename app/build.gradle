@@ -28,9 +28,6 @@ android {
             }
         }
     }
-    lintOptions {
-        abortOnError false
-    }
     buildFeatures {
         dataBinding = true
     }
@@ -51,6 +48,10 @@ android {
         // Sets Java compatibility to Java 8
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    namespace 'org.shadowice.flocke.andotp'
+    lint {
+        abortOnError false
     }
 }
 
