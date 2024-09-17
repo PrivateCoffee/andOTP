@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     defaultConfig {
-        applicationId "org.shadowice.flocke.andotp"
+        applicationId "codes.kumi.andotp"
         minSdkVersion 22
         targetSdkVersion 33
         compileSdkVersion 33
