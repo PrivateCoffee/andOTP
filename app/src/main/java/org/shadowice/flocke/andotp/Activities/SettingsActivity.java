@@ -164,12 +164,12 @@ public class SettingsActivity extends BackgroundTaskActivity<ChangeEncryptionTas
                 key.equals(getString(R.string.settings_key_theme_mode)) ||
                 key.equals(getString(R.string.settings_key_theme_black_auto))) {
             recreate();
-        } else if(key.equals(getString(R.string.settings_key_encryption))) {
+        } else if (key.equals(getString(R.string.settings_key_encryption))) {
             if (settings.getEncryption() != EncryptionType.PASSWORD) {
                 if (settings.getAndroidBackupServiceEnabled()) {
                     UIHelper.showGenericDialog(this,
-                        R.string.settings_dialog_title_android_sync,
-                        R.string.settings_dialog_msg_android_sync_disabled_encryption
+                            R.string.settings_dialog_title_android_sync,
+                            R.string.settings_dialog_msg_android_sync_disabled_encryption
                     );
                 }
 
@@ -182,12 +182,12 @@ public class SettingsActivity extends BackgroundTaskActivity<ChangeEncryptionTas
                 if (fragment.useAndroidSync != null)
                     fragment.useAndroidSync.setEnabled(true);
             }
-        } else if(key.equals(getString(R.string.settings_key_enable_android_backup_service))) {
+        } else if (key.equals(getString(R.string.settings_key_enable_android_backup_service))) {
             Log.d(SettingsActivity.class.getSimpleName(), "onSharedPreferenceChanged called modifying settings_key_enable_android_backup_service service is now: " +
                     (settings.getAndroidBackupServiceEnabled() ? "enabled" : "disabled"));
 
             int message = settings.getAndroidBackupServiceEnabled() ? R.string.settings_toast_android_sync_enabled : R.string.settings_toast_android_sync_disabled;
-            Snackbar.make(fragment.getView(), message, BaseTransientBottomBar.LENGTH_SHORT).show();
+            Snackbar.make(findViewById(android.R.id.content), message, BaseTransientBottomBar.LENGTH_SHORT).show();
         }
 
         fragment.updateAutoBackup();
@@ -460,12 +460,12 @@ public class SettingsActivity extends BackgroundTaskActivity<ChangeEncryptionTas
                 return true;
             });
 
-            useAutoBackup = (ListPreference)findPreference(getString(R.string.settings_key_auto_backup_password_enc));
+            useAutoBackup = (ListPreference) findPreference(getString(R.string.settings_key_auto_backup_password_enc));
             updateAutoBackup();
 
             useAndroidSync = (CheckBoxPreference) findPreference(getString(R.string.settings_key_enable_android_backup_service));
             useAndroidSync.setEnabled(settings.getEncryption() == EncryptionType.PASSWORD);
-            if(!useAndroidSync.isEnabled())
+            if (!useAndroidSync.isEnabled())
                 useAndroidSync.setChecked(false);
 
             if (sharedPref.contains(getString(R.string.settings_key_special_features)) &&
@@ -497,7 +497,7 @@ public class SettingsActivity extends BackgroundTaskActivity<ChangeEncryptionTas
                 });
             }
             // Remove Theme Mode selection option for devices below Android 10. Disable theme selection if Theme Mode is set auto
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 catUI.removePreference(themeMode);
                 catUI.removePreference(themeBlack);
             } else {
