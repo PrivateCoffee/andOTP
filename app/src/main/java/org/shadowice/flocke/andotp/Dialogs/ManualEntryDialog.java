@@ -39,9 +39,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
-import com.github.aakira.expandablelayout.ExpandableLinearLayout;
-
 import org.shadowice.flocke.andotp.Activities.MainActivity;
 import org.shadowice.flocke.andotp.Database.Entry;
 import org.shadowice.flocke.andotp.R;
@@ -170,21 +167,37 @@ public class ManualEntryDialog {
         // Dirty fix for the compound drawable to avoid crashes on KitKat
         expandButton.setCompoundDrawablesWithIntrinsicBounds(null, null, ResourcesCompat.getDrawable(callingActivity.getResources(), R.drawable.ic_arrow_down_accent, null), null);
 
-        final ExpandableLinearLayout expandLayout = inputView.findViewById(R.id.dialog_expand_layout);
+        final LinearLayout expandLayout = inputView.findViewById(R.id.dialog_expand_layout);
 
-        expandButton.setOnClickListener(view -> expandLayout.toggle());
+        // Initial state: collapsed
+        expandLayout.setVisibility(View.GONE);
+        expandButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                0, 0, R.drawable.ic_arrow_down_accent, 0);
 
-        expandLayout.setListener(new ExpandableLayoutListenerAdapter() {
-            @Override
-            public void onOpened() {
-                super.onOpened();
-                expandButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_up_accent, 0);
-            }
-
-            @Override
-            public void onClosed() {
-                super.onClosed();
-                expandButton.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_down_accent, 0);
+        // Toggle with animation
+        expandButton.setOnClickListener(view -> {
+            if (expandLayout.getVisibility() == View.VISIBLE) {
+                // Collapse
+                expandLayout.animate()
+                        .alpha(0.0f)
+                        .setDuration(180)
+                        .withEndAction(() -> {
+                            expandLayout.setVisibility(View.GONE);
+                            expandButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                                    0, 0, R.drawable.ic_arrow_down_accent, 0);
+                            expandLayout.setAlpha(1f);
+                        }).start();
+            } else {
+                // Expand
+                expandLayout.setAlpha(0f);
+                expandLayout.setVisibility(View.VISIBLE);
+                expandLayout.animate()
+                        .alpha(1.0f)
+                        .setDuration(180)
+                        .withStartAction(() -> {
+                            expandButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                                    0, 0, R.drawable.ic_arrow_up_accent, 0);
+                        }).start();
             }
         });
 

@@ -19,7 +19,6 @@
         <!-- TODO: Rework configuration changes to properly recreate the activity -->
         <activity
             android:name=".Activities.MainActivity"
-            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:exported="true"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|keyboard">

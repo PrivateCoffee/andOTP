@@ -75,18 +75,16 @@ public class NotificationHelper {
     }
 
     public static void notify(Context context, Constants.NotificationChannel channel , int resIdTitle, String resBody) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, null)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId(channel))
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(context.getText(resIdTitle))
-                .setStyle(new NotificationCompat.BigTextStyle()
-                    .bigText(resBody));
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(resBody));
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             builder.setPriority(NotificationCompat.PRIORITY_HIGH);
         }
 
         createNotificationChannel(context, channel);
-        builder.setChannelId(channelId(channel));
 
         int notificationId = 1;
 

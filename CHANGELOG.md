@@ -1,5 +1,9 @@
 # Changelog
 
+#### v0.9.2
+
+ * Chores: Dependency updates
+
 #### v0.9.1
 
  * Chores: Ensuring Android 14 compatibility, build fixes
