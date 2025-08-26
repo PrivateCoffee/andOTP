@@ -1,0 +1,73 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+
+permissions:
+  contents: write
+  actions: write
+
+# There should only be one instance of this
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+name: Deploy snapshot builds
+jobs:
+  deploy-release-snapshot:
+    runs-on: docker
+    container:
+      image: cimg/android:2025.04.1-node
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+    - name: Decrypt secrets
+      shell: bash
+      run: scripts/signing-setup.sh "$ENCRYPT_KEY"
+      env:
+        ENCRYPT_KEY: ${{ secrets.ENCRYPT_KEY }}
+
+    - name: Build release app
+      shell: bash
+      run: ./gradlew assemble
+      env:
+        SNAPSHOT: "true"
+
+    - name: Clean secrets
+      shell: bash
+      run: scripts/signing-cleanup.sh
+
+    - name: Deploy snapshot
+      uses: https://code.forgejo.org/forgejo/upload-artifact@16871d9e8cfcf27ff31822cac382bbb5450f1e1e # v4
+      with:
+        name: snapshot.zip
+        path: app/build/outputs/
+
+    - name: Deploy package
+      uses: https://git.private.coffee/kumi/upload-package@1cbe55ed6761a37490ea1876651f657659ad9336
+      with:
+        package-name: ${{ github.event.repository.name }}
+        version: ${{ github.sha }}
+        path: app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: warn
+        FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+        FORGEJO_INSTANCE: ${{ github.server_url }}
+        OWNER: ${{ env.GITHUB_REPOSITORY_OWNER }}
+        REPO: ${{ github.event.repository.name }}
+
+    - name: Deploy package as latest
+      uses: https://git.private.coffee/kumi/upload-package@1cbe55ed6761a37490ea1876651f657659ad9336
+      with:
+        package-name: ${{ github.event.repository.name }}
+        version: latest
+        path: app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: warn
+        overwrite: true
+        FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+        FORGEJO_INSTANCE: ${{ github.server_url }}
+        OWNER: ${{ env.GITHUB_REPOSITORY_OWNER }}
+        REPO: ${{ github.event.repository.name }}
