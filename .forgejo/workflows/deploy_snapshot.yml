@@ -52,8 +52,7 @@ jobs:
       with:
         package-name: ${{ github.event.repository.name }}
         version: ${{ github.sha }}
-        path: app/build/outputs/apk/release/app-release.apk
-        if-no-files-found: warn
+        path: app/build/outputs/apk/fdroid/release/app-fdroid-release.apk
         FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
         FORGEJO_INSTANCE: ${{ github.server_url }}
         OWNER: ${{ env.GITHUB_REPOSITORY_OWNER }}
@@ -64,8 +63,7 @@ jobs:
       with:
         package-name: ${{ github.event.repository.name }}
         version: latest
-        path: app/build/outputs/apk/release/app-release.apk
-        if-no-files-found: warn
+        path: app/build/outputs/apk/fdroid/release/app-fdroid-release.apk
         overwrite: true
         FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
         FORGEJO_INSTANCE: ${{ github.server_url }}
