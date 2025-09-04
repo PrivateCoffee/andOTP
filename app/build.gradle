@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     defaultConfig {
-        applicationId "codes.kumi.andotp"
+        applicationId "coffee.private.andotp"
         minSdkVersion 22
         targetSdkVersion 36
         compileSdkVersion 36
@@ -15,6 +15,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix = ".dev"
@@ -23,6 +24,22 @@ android {
 
             tasks.withType(JavaCompile) {
                 options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+            }
+
+            signingConfig signingConfigs.release
+        }
+    }
+    signingConfig {
+        release {
+            def keystorePropertiesFile = rootProject.file("keystore.properties")
+            if (keystorePropertiesFile.exists()) {
+                def keystoreProperties = new Properties()
+                keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+                storeFile = file(keystoreProperties['storeFile'])
+                storePassword = keystoreProperties['storePassword']
+                keyAlias = keystoreProperties['keyAlias']
+                keyPassword = keystoreProperties['keyPassword']
             }
         }
     }
@@ -54,9 +71,9 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.9.2"
+    def lifecycle_version = "2.9.3"
 
-    implementation 'androidx.media:media:1.7.0'
+    implementation 'androidx.media:media:1.7.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -64,7 +81,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation "androidx.lifecycle:lifecycle-process:${lifecycle_version}"
     implementation "androidx.lifecycle:lifecycle-common-java8:${lifecycle_version}"
-    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.google.android.material:material:1.13.0'
 
     //noinspection GradleDependency - because they messed up their version numbering
     implementation "commons-codec:commons-codec:1.19.0"
