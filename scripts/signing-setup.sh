@@ -9,8 +9,8 @@ set -e
 ENCRYPT_KEY=$1
 
 declare -A SECRETS
-SECRETS[secrets/keystore.cipher]=keystore.jks
-SECRETS[secrets/props.cipher]=keystore.properties
+SECRETS[secrets/keystore.cipher]=app/keystore.jks
+SECRETS[secrets/props.cipher]=app/keystore.properties
 
 if [[ -n "$ENCRYPT_KEY" ]]; then
     for src in "${!SECRETS[@]}"; do

@@ -7,7 +7,7 @@
 set -ex
 
 # Delete Release key
-rm -f keystore.jks
+rm -f app/keystore.jks
 
 # Delete signing config
-rm -f keystore.properties
+rm -f app/keystore.properties
