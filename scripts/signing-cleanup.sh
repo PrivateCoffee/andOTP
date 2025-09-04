@@ -10,4 +10,4 @@ set -ex
 rm -f app/keystore.jks
 
 # Delete signing config
-rm -f app/keystore.properties
+rm -f keystore.properties
