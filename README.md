@@ -1,18 +1,10 @@
-#  andOTP -  Android OTP Authenticator
+# andOTP - Android OTP Authenticator
 
-[![Build Status](https://travis-ci.org/andOTP/andOTP.svg?branch=master)](https://travis-ci.org/andOTP/andOTP)
-[![Current release](https://img.shields.io/github/release/andOTP/andOTP/all.svg)](https://github.com/andOTP/andOTP/releases/download/v0.9.0.1/andOTP_v0.9.0.1.apk)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/andotp/localized.svg)](https://crowdin.com/project/andotp)
-[![Chat - Telegram](https://img.shields.io/badge/chat-Telegram-blue.svg)](https://t.me/andOTP)
-[![Chat - Matrix](https://img.shields.io/badge/chat-Matrix-blue.svg)](https://matrix.to/#/#andOTP:privacytools.io)
+[![Build Status](https://git.private.coffee/PrivateCoffee/andOTP/badges/workflows/deploy_snapshot.yml/badge.svg)](https://git.private.coffee/PrivateCoffee/andOTP/actions)
+[![Latest Commit](https://shields.private.coffee/gitea/last-commit/PrivateCoffee/andOTP?gitea_url=https%3A%2F%2Fgit.private.coffee)](https://git.private.coffee/PrivateCoffee/andOTP)
+[![Chat - Matrix](https://shields.private.coffee/badge/chat-Matrix-blue.svg)](https://matrix.pcof.fi/#/#general:private.coffee)
 
-![andOTP](./assets/logo.png)
-
-## Unmaintained
-
-**This repository is currently unmaintained.**
-
-See [this XDA post](https://forum.xda-developers.com/t/app-4-4-open-source-andotp-open-source-two-factor-authentication-for-android.3636993/post-87021655) for more details.
+![andOTP](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/logo.png)
 
 ## Intro
 
@@ -25,32 +17,34 @@ This project started out as a fork of the great [OTP Authenticator](https://gith
 which has sadly been inactive since 2015. By now almost every aspect of the app has been changed/re-written so the fork status of the Github repository got
 detached upon [user request](https://github.com/andOTP/andOTP/issues/145). But all credit for the original version and for starting this project still goes to Bruno!
 
-## Help wanted:
-I currently don't have that much time to spend developing andOTP, so any contributions are always welcome.
-Don't worry, I will still continue to develop andOTP it will just slow down from the incredible speed I had going in the beginning.
+### Fork Information
+
+This is a fork of the [original andOTP project](https://github.com/andOTP/andOTP) by [Jakob Nixdorf](https://github.com/flocke), which is no longer maintained. This fork is maintained by [Private.coffee](https://private.coffee) and aims to keep the app up-to-date with the latest Android versions. It is not as thoroughly tested as the original app, so please report any issues you encounter.
+
+All commits on the main branch trigger a build of an APK, which is uploaded to the [Private.coffee Git](https://git.private.coffee/PrivateCoffee/-/packages/generic/andotp/latest). To migrate from the original andOTP app, please create a backup of your data using the original app and restore it using this fork.
 
 ## Features:
 
- * Free and Open-Source
- * Requires minimal permissions
-   - Camera access for QR code scanning
-   - Storage access for import and export of the database
- * Encrypted storage with two backends:
-   - Android KeyStore
-   - Password / PIN
- * Multiple backup options:
-   - Plain-text
-   - Password-protected
-   - OpenPGP-encrypted
- * Sleek minimalistic Material Design with three different themes:
-   - Light
-   - Dark
-   - Black (for OLED screens)
- * Great Usability
- * Compatible with Google Authenticator
- * Supported algorithms:
-   - TOTP (Time-based One-time Passwords) as specified in [RFC 6238](https://tools.ietf.org/html/rfc6238)
-   - HOTP (HMAC-based One-time Passwords) as specified in [RFC 4226](https://tools.ietf.org/html/rfc4226)
+- Free and Open-Source
+- Requires minimal permissions
+  - Camera access for QR code scanning
+  - Storage access for import and export of the database
+- Encrypted storage with two backends:
+  - Android KeyStore
+  - Password / PIN
+- Multiple backup options:
+  - Plain-text
+  - Password-protected
+  - OpenPGP-encrypted
+- Sleek minimalistic Material Design with three different themes:
+  - Light
+  - Dark
+  - Black (for OLED screens)
+- Great Usability
+- Compatible with Google Authenticator
+- Supported algorithms:
+  - TOTP (Time-based One-time Passwords) as specified in [RFC 6238](https://tools.ietf.org/html/rfc6238)
+  - HOTP (HMAC-based One-time Passwords) as specified in [RFC 4226](https://tools.ietf.org/html/rfc4226)
 
 ## Backups:
 
@@ -69,17 +63,17 @@ key, which renders them useless.
 
 ### Opening the backups on your PC:
 
- * [OpenPGP](https://openpgp.org/): OpenPGP can be used to easily decrypt the **OpenPGP-encrypted backups** on your PC.
- * [WebDecrypt](https://flocke.shadowice.org/andOTP/decrypt/): JavaScript-based decryption of the **new password-protected backup format** in the browser ([source code](https://github.com/andOTP/WebDecrypt)).
- * [andOTP-decrypt](https://github.com/asmw/andOTP-decrypt): Python script written by @asmw to decrypt the **old and new password-protected backup format** on your PC.
- * [mac2fa](https://github.com/lorenzo2897/mac2fa): Electron app for macOS that lives in your system tray and generates OTPs from an encrypted backup file.
- * [go-andotp](https://github.com/grijul/go-andotp): CLI Program written in go to encrypt/decrypt andOTP files on your PC. Decrypted files can be encrypted and imported back to andOTP.
+- [OpenPGP](https://openpgp.org/): OpenPGP can be used to easily decrypt the **OpenPGP-encrypted backups** on your PC.
+- [WebDecrypt](https://flocke.shadowice.org/andOTP/decrypt/): JavaScript-based decryption of the **new password-protected backup format** in the browser ([source code](https://github.com/andOTP/WebDecrypt)).
+- [andOTP-decrypt](https://github.com/asmw/andOTP-decrypt): Python script written by @asmw to decrypt the **old and new password-protected backup format** on your PC.
+- [mac2fa](https://github.com/lorenzo2897/mac2fa): Electron app for macOS that lives in your system tray and generates OTPs from an encrypted backup file.
+- [go-andotp](https://github.com/grijul/go-andotp): CLI Program written in go to encrypt/decrypt andOTP files on your PC. Decrypted files can be encrypted and imported back to andOTP.
 
 ### Automatic backups:
 
- * BroadcastReceivers: AndOTP supports a number of broadcasts to perform automated backups, eg. via Tasker. These will get saved to the defined backup directory. **These only work when KeyStore is used as the encryption mechanism**
-   - **org.shadowice.flocke.andotp.broadcast.PLAIN_TEXT_BACKUP**: Perform a plain text backup. **WARNING**: This will save your 2FA tokens onto the disk in an unencrypted manner!
-   - **org.shadowice.flocke.andotp.broadcast.ENCRYPTED_BACKUP**: Perform an encrypted backup of your 2FA database using the selected password in settings.
+- BroadcastReceivers: AndOTP supports a number of broadcasts to perform automated backups, eg. via Tasker. These will get saved to the defined backup directory. **These only work when KeyStore is used as the encryption mechanism**
+  - **org.shadowice.flocke.andotp.broadcast.PLAIN_TEXT_BACKUP**: Perform a plain text backup. **WARNING**: This will save your 2FA tokens onto the disk in an unencrypted manner!
+  - **org.shadowice.flocke.andotp.broadcast.ENCRYPTED_BACKUP**: Perform an encrypted backup of your 2FA database using the selected password in settings.
 
 ## Migration:
 
@@ -87,83 +81,83 @@ Check out [this](https://github.com/andOTP/andOTP/wiki/Migration) wiki page to l
 
 ## Downloads:
 
-[<img height=80 alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" />](https://play.google.com/store/apps/details?id=org.shadowice.flocke.andotp)
-[<img height=80 alt="Get it on F-Droid" src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" />](https://f-droid.org/packages/org.shadowice.flocke.andotp/)
-[<img height=80 alt="Get it on GitHub" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/badges/get-it-on-github.png" />](https://github.com/andOTP/andOTP/releases)
+You can download the latest version of andOTP from the following location:
 
-**Warning**: All three versions (Google Play, F-Droid and the APKs) are not compatible (not signed by the same key)!
-You will have to uninstall one to install the other, which will delete all your data.
-So make sure you have a **current backup** before switching!
+- [Private.coffee Git](https://git.private.coffee/PrivateCoffee/-/packages/generic/andotp/latest) (Latest builds from the main branch, may be unstable)
+
+This APK is based on the F-Droid version of the original project. The Google Play version also still exists, but only within the artifacts of the CI pipeline.
 
 ## Contribute:
 
- * **Translation**: If you want to help translate andOTP into your language head over to the [Crowdin project](https://crowdin.com/project/andotp).
- * **Bug reports and feature requests**: You can report bugs and request features in the [Issue tracker](https://github.com/andOTP/andOTP/issues) on GitHub.
- * **Requesting thumbnails**: If you are missing a thumbnail you can request it by [opening a thumbnail request](https://github.com/andOTP/andOTP/issues/new/choose).
- * **Discussion and support**: 
-   - [XDA thread](https://forum.xda-developers.com/android/apps-games/app-andotp-android-otp-authenticator-t3636993) (please keep off-topic to a minimum)
-   - Telegram group [@andOTP](https://t.me/andOTP) (if you just want important updates you can mute the group so you only get notified about pinned messages)
-   - Matrix channel [#andOTP:tchncs.de](https://matrix.to/#/#andOTP:tchncs.de)
+- **Bug reports and feature requests**: You can report bugs and request features in the issue tracker on [Private.coffee Git](https://git.private.coffee/PrivateCoffee/andOTP/issues) or [GitHub](https://github.com/PrivateCoffee/andOTP/issues).
+- **Requesting thumbnails**: If you are missing a thumbnail you can request it by [opening a thumbnail request](https://git.private.coffee/PrivateCoffee/andOTP/issues/new/choose).
+- **Discussion and support**:
+  - Matrix channel [#general:private.coffee](https://matrix.pcof.fi/#/#general:private.coffee)
 
 #### Donations:
 
 If you want to show your appreciation for our work with a small donation you can do so using the following links:
 
- * [Donate to Jakob Nixdorf](https://flocke.shadowice.org/donate.html) (Main developer, maintainer)
- * [Donate to Richy HBM](https://richyhbm.co.uk/donate) (Developer)
+- [Donate to Jakob Nixdorf](https://flocke.shadowice.org/donate.html) (Main developer and maintainer of the original project)
+- [Donate to Private.coffee](https://private.coffee/membership.html) (Maintainer of this fork)
 
 ## Screenshots:
+
 #### Light theme:
 
-[<img width=200 alt="Main Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/main_activity.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/main_activity.png)
-[<img width=200 alt="Settings Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/settings_activity.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/settings_activity.png)
-[<img width=200 alt="Backup Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/backup_activity.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/backup_activity.png)
+[<img width=200 alt="Main Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main//assets/screenshots/main_activity.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/main_activity.png)
+[<img width=200 alt="Settings Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main//assets/screenshots/settings_activity.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/settings_activity.png)
+[<img width=200 alt="Backup Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/backup_activity.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/backup_activity.png)
 
 #### Dark theme:
 
-[<img width=200 alt="Main Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/main_activity_dark.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/main_activity_dark.png)
-[<img width=200 alt="Settings Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/settings_activity_dark.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/settings_activity_dark.png)
-[<img width=200 alt="Backup Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/backup_activity_dark.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/backup_activity_dark.png)
+[<img width=200 alt="Main Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/main_activity_dark.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/main_activity_dark.png)
+[<img width=200 alt="Settings Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/settings_activity_dark.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/settings_activity_dark.png)
+[<img width=200 alt="Backup Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/backup_activity_dark.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/backup_activity_dark.png)
 
 #### Black theme:
 
-[<img width=200 alt="Main Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/main_activity_black.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/main_activity_black.png)
-[<img width=200 alt="Settings Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/settings_activity_black.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/settings_activity_black.png)
-[<img width=200 alt="Backup Activity" src="https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/backup_activity_black.png">](https://raw.githubusercontent.com/flocke/andOTP/master/assets/screenshots/backup_activity_black.png)
+[<img width=200 alt="Main Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/main_activity_black.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/main_activity_black.png)
+[<img width=200 alt="Settings Activity" src="https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/settings_activity_black.png">](https://git.private.coffee/PrivateCoffee/andOTP/raw/branch/main/assets/screenshots/settings_activity_black.png)
 
 ## Acknowledgments:
+
 #### Open-source components used:
 
- * [AboutLibraries](https://github.com/mikepenz/AboutLibraries)
- * [Apache Commons Codec](https://commons.apache.org/proper/commons-codec/)
- * [Expandable Layout](https://github.com/AAkira/ExpandableLayout)
- * [Floating Action Button Speed Dial](https://github.com/leinardi/FloatingActionButtonSpeedDial)
- * [material-intro](https://github.com/heinrichreimer/material-intro)
- * [MaterialProgressBar](https://github.com/DreaminginCodeZH/MaterialProgressBar)
- * [OpenPGP API library](https://github.com/open-keychain/openpgp-api)
- * [ZXing Android Embedded](https://github.com/journeyapps/zxing-android-embedded)
- * [Droid Sans Mono Zeromod](https://github.com/AlbertoDorado/droid-sans-mono-zeromod)
+- [AboutLibraries](https://github.com/mikepenz/AboutLibraries)
+- [Apache Commons Codec](https://commons.apache.org/proper/commons-codec/)
+- [Floating Action Button Speed Dial](https://github.com/leinardi/FloatingActionButtonSpeedDial)
+- [material-intro](https://github.com/heinrichreimer/material-intro)
+- [MaterialProgressBar](https://github.com/DreaminginCodeZH/MaterialProgressBar)
+- [OpenPGP API library](https://github.com/open-keychain/openpgp-api)
+- [ZXing Android Embedded](https://github.com/journeyapps/zxing-android-embedded)
+- [Droid Sans Mono Zeromod](https://github.com/AlbertoDorado/droid-sans-mono-zeromod)
 
 #### Code examples used:
 
- * [Android-ItemTouchHelper-Demo](https://github.com/iPaulPro/Android-ItemTouchHelper-Demo/tree/master/app/src/main/java/co/paulburke/android/itemtouchhelperdemo/helper)
- * [Code Parts from Google's Android Samples](https://android.googlesource.com/platform/development/+/master/samples/Vault/src/com/example/android/vault)
- * [LetterBitmap](https://stackoverflow.com/questions/23122088/colored-boxed-with-letters-a-la-gmail)
- * [DimensionConverter](https://stackoverflow.com/questions/8343971/how-to-parse-a-dimension-string-and-convert-it-to-a-dimension-value)
- * [NumberPickerPreference](https://github.com/Alobar/AndroidPreferenceTest/tree/master/alobar-preference)
+- [Android-ItemTouchHelper-Demo](https://github.com/iPaulPro/Android-ItemTouchHelper-Demo/tree/master/app/src/main/java/co/paulburke/android/itemtouchhelperdemo/helper)
+- [Code Parts from Google's Android Samples](https://android.googlesource.com/platform/development/+/master/samples/Vault/src/com/example/android/vault)
+- [LetterBitmap](https://stackoverflow.com/questions/23122088/colored-boxed-with-letters-a-la-gmail)
+- [DimensionConverter](https://stackoverflow.com/questions/8343971/how-to-parse-a-dimension-string-and-convert-it-to-a-dimension-value)
+- [NumberPickerPreference](https://github.com/Alobar/AndroidPreferenceTest/tree/master/alobar-preference)
 
 #### Previously used open-source components:
 
- * [FABsMenu](https://github.com/jahirfiquitiva/FABsMenu)
- * [LicensesDialog](https://github.com/PSDev/LicensesDialog)
- * [VNTNumberPickerPreference](https://github.com/vanniktech/VNTNumberPickerPreference)
+- [FABsMenu](https://github.com/jahirfiquitiva/FABsMenu)
+- [LicensesDialog](https://github.com/PSDev/LicensesDialog)
+- [VNTNumberPickerPreference](https://github.com/vanniktech/VNTNumberPickerPreference)
+- [Expandable Layout](https://github.com/AAkira/ExpandableLayout)
 
 #### Previously used code examples:
 
- * [FloatingActionMenuAndroid](https://github.com/pmahsky/FloatingActionMenuAndroid)
+- [FloatingActionMenuAndroid](https://github.com/pmahsky/FloatingActionMenuAndroid)
 
 ## License:
+
 ```
+MIT License
+
+Copyright (C) 2025 Private.coffee Team
 Copyright (C) 2017-2020 Jakob Nixdorf <andotp@shadowice.org>
 Copyright (C) 2015 Bruno Bierbaumer
 
