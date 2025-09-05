@@ -23,6 +23,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
+    - name: Extract version code
+      run: |
+        VERSION_CODE=$(grep -oP 'versionCode\s+\K\d+' app/build.gradle)
+        echo "VERSION_CODE=${VERSION_CODE}" >> $GITHUB_ENV
+
     - name: Decrypt secrets
       shell: bash
       run: scripts/signing-setup.sh "$ENCRYPT_KEY"
@@ -49,7 +54,7 @@ jobs:
       uses: https://git.private.coffee/kumi/upload-package@1cbe55ed6761a37490ea1876651f657659ad9336
       with:
         package-name: ${{ github.event.repository.name }}
-        version: ${{ github.sha }}
+        version: ${{ env.VERSION_CODE }}
         path: app/build/outputs/apk/fdroid/release/app-fdroid-release.apk
         FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
         FORGEJO_INSTANCE: ${{ github.server_url }}
