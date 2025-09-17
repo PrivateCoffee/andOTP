@@ -71,7 +71,7 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.9.3"
+    def lifecycle_version = "2.9.4"
 
     implementation 'androidx.media:media:1.7.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
