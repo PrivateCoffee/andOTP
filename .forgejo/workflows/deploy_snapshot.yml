@@ -17,7 +17,7 @@ jobs:
   deploy-release-snapshot:
     runs-on: docker
     container:
-      image: cimg/android:2025.04.1-node
+      image: cimg/android:2025.10.1-node
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     steps:
     - name: Checkout repository
