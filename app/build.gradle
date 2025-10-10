@@ -92,7 +92,7 @@ dependencies {
     implementation "com.github.open-keychain.open-keychain:openpgp-api:5.8.2"
     implementation "com.leinardi.android:speed-dial:3.3.0"
     //noinspection NewerVersionAvailable - supporting a newer version will need some work
-    implementation "com.mikepenz:aboutlibraries:6.2.3"
+    implementation "com.mikepenz:aboutlibraries:13.0.0"
 
     androidTestImplementation "androidx.test.espresso:espresso-core:3.7.0"
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
