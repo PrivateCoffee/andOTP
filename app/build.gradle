@@ -84,7 +84,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.13.0'
 
     //noinspection GradleDependency - because they messed up their version numbering
-    implementation "commons-codec:commons-codec:1.19.0"
+    implementation "commons-codec:commons-codec:1.22.1"
     implementation "com.heinrichreimersoftware:material-intro:2.0.0"
     implementation("com.journeyapps:zxing-android-embedded:4.3.0") { transitive = false }
     implementation('com.google.zxing:core:3.5.3')
